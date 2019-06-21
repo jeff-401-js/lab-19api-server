@@ -36,6 +36,15 @@ app.put('/update', (res) => {
   res.send('update');
 });
 
+app.delete('/delete', (res) => {
+  let payload = {
+    name: 'delete',
+    data: `DELETE: event just happened!`,
+  };
+  Q.publish('files', 'read', JSON.stringify(payload));
+  res.send('delete');
+});
+
 
 module.exports = {
   server: app,
