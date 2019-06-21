@@ -23,7 +23,7 @@ app.post('/create', (res) => {
     name: 'create',
     data: `CREATE: event just happened!`,
   };
-  Q.publish('files', 'read', JSON.stringify(payload));
+  Q.publish('files', 'create', JSON.stringify(payload));
   res.send('post');
 });
 
@@ -32,7 +32,7 @@ app.put('/update', (res) => {
     name: 'update',
     data: `UPDATE: event just happened!`,
   };
-  Q.publish('files', 'read', JSON.stringify(payload));
+  Q.publish('files', 'update', JSON.stringify(payload));
   res.send('update');
 });
 
@@ -41,8 +41,17 @@ app.delete('/delete', (res) => {
     name: 'delete',
     data: `DELETE: event just happened!`,
   };
-  Q.publish('files', 'read', JSON.stringify(payload));
+  Q.publish('files', 'delete', JSON.stringify(payload));
   res.send('delete');
+});
+
+app.use('/error', (res) => {
+  let payload = {
+    name: 'error',
+    data: `ERROR: event just happened!`,
+  };
+  Q.publish('files', 'error', JSON.stringify(payload));
+  res.send('error');
 });
 
 
