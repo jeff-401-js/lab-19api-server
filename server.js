@@ -27,6 +27,15 @@ app.post('/create', (res) => {
   res.send('post');
 });
 
+app.put('/update', (res) => {
+  let payload = {
+    name: 'update',
+    data: `UPDATE: event just happened!`,
+  };
+  Q.publish('files', 'read', JSON.stringify(payload));
+  res.send('update');
+});
+
 
 module.exports = {
   server: app,
