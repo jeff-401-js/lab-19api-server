@@ -47,7 +47,7 @@ app.delete('/delete', (req, res) => {
   res.status(200).json(payload);
 });
 
-app.use('/error', (req, res) => {
+app.use((req, res) => {
   let payload = {
     name: 'error',
     data: `ERROR: event just happened!`,
