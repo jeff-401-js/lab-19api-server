@@ -4,67 +4,67 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const router = express.Router();
+// const router = express.Router();
 
 
 app.use(express.json());
 
-app.use(express.urlencoded({extended: true}));
+// app.use(express.urlencoded({extended: true}));
 
-app.use(router);
+// app.use(router);
 
 const Q = require('@nmq/q/client');
 
-router.get('/read', (res) => {
+app.get('/read', (req, res) => {
   let payload = {
     name: 'read',
     data: `READ: event just happened!`,
   };
-  Q.publish('files', 'read', JSON.stringify(payload));
+  Q.publish('database', 'read', JSON.stringify(payload));
   res.status(200).json(payload);
 });
 
-router.post('/create', (res) => {
+app.post('/create', (req, res) => {
   let payload = {
     name: 'create',
     data: `CREATE: event just happened!`,
   };
-  Q.publish('files', 'create', JSON.stringify(payload));
-  res.send('post');
+  Q.publish('database', 'create', JSON.stringify(payload));
+  res.status(200).json(payload);
 });
 
-router.put('/update', (res) => {
+app.put('/update', (req, res) => {
   let payload = {
     name: 'update',
     data: `UPDATE: event just happened!`,
   };
-  Q.publish('files', 'update', JSON.stringify(payload));
-  res.send('update');
+  Q.publish('database', 'update', JSON.stringify(payload));
+  res.status(200).json(payload);
 });
 
-router.delete('/delete', (res) => {
+app.delete('/delete', (req, res) => {
   let payload = {
     name: 'delete',
     data: `DELETE: event just happened!`,
   };
-  Q.publish('files', 'delete', JSON.stringify(payload));
-  res.send('delete');
+  Q.publish('database', 'delete', JSON.stringify(payload));
+  res.status(200).json(payload);
 });
 
-router.use('/error', (res) => {
+app.use('/error', (req, res) => {
   let payload = {
     name: 'error',
     data: `ERROR: event just happened!`,
   };
-  Q.publish('files', 'error', JSON.stringify(payload));
-  res.send('error');
+  Q.publish('database', 'error', JSON.stringify(payload));
+  res.status(200).json(payload);
 });
 
 
 module.exports = {
   server: app,
   start: port => {
-    let PORT = process.env.PORT || 3000;
+    let PORT = process.env.PORT || 3001;
     app.listen(PORT, () => console.log(`WE HEAR ALL ON PORT ${PORT}`));
   },
 };
