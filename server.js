@@ -4,21 +4,27 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const router = express.Router();
+
 
 app.use(express.json());
 
+app.use(express.urlencoded({extended: true}));
+
+app.use(router);
+
 const Q = require('@nmq/q/client');
 
-app.get('/read', (res) => {
+router.get('/read', (res) => {
   let payload = {
     name: 'read',
     data: `READ: event just happened!`,
   };
   Q.publish('files', 'read', JSON.stringify(payload));
-  res.send('get');
+  res.status(200).json(payload);
 });
 
-app.post('/create', (res) => {
+router.post('/create', (res) => {
   let payload = {
     name: 'create',
     data: `CREATE: event just happened!`,
@@ -27,7 +33,7 @@ app.post('/create', (res) => {
   res.send('post');
 });
 
-app.put('/update', (res) => {
+router.put('/update', (res) => {
   let payload = {
     name: 'update',
     data: `UPDATE: event just happened!`,
@@ -36,7 +42,7 @@ app.put('/update', (res) => {
   res.send('update');
 });
 
-app.delete('/delete', (res) => {
+router.delete('/delete', (res) => {
   let payload = {
     name: 'delete',
     data: `DELETE: event just happened!`,
@@ -45,7 +51,7 @@ app.delete('/delete', (res) => {
   res.send('delete');
 });
 
-app.use('/error', (res) => {
+router.use('/error', (res) => {
   let payload = {
     name: 'error',
     data: `ERROR: event just happened!`,
