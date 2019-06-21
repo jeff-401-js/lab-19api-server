@@ -59,7 +59,7 @@ app.use('/error', (req, res) => {
 
 module.exports = {
   server: app,
-  start: port => {
+  start: () => {
     let PORT = process.env.PORT || 3001;
     app.listen(PORT, () => console.log(`WE HEAR ALL ON PORT ${PORT}`));
   },
