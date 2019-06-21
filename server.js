@@ -18,6 +18,15 @@ app.get('/read', (res) => {
   res.send('get');
 });
 
+app.post('/create', (res) => {
+  let payload = {
+    name: 'create',
+    data: `CREATE: event just happened!`,
+  };
+  Q.publish('files', 'read', JSON.stringify(payload));
+  res.send('post');
+});
+
 
 module.exports = {
   server: app,
