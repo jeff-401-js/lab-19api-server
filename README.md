@@ -22,7 +22,7 @@ jest
 nmq
 
 #### `.env` requirements
-PORT=3000
+PORT=3001
 Q_SERVER=http://localhost:3000
 
 #### Running the app
