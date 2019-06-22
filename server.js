@@ -29,7 +29,7 @@ const Q = require('@nmq/q/client');
  * @consumes nothing
  * @param {object} req - request object
  * @param {object} res - response object
- * @returns {Object} 200 - returns json object with name and data
+ * @returns {Object} 200 - returns json object with event name and data string
  */
 
 app.get('/read', (req, res) => {
@@ -41,6 +41,15 @@ app.get('/read', (req, res) => {
   res.status(200).json(payload);
 });
 
+/**
+ * post route create
+ * @route POST /{create}
+ * @consumes nothing
+ * @param {object} req - request object
+ * @param {object} res - response object
+ * @returns {Object} 200 - returns json object with event name and data string
+ */
+
 app.post('/create', (req, res) => {
   let payload = {
     name: 'create',
@@ -49,6 +58,15 @@ app.post('/create', (req, res) => {
   Q.publish('database', 'create', JSON.stringify(payload));
   res.status(200).json(payload);
 });
+
+/**
+ * put route update
+ * @route PUT /{update}
+ * @consumes nothing
+ * @param {object} req - request object
+ * @param {object} res - response object
+ * @returns {Object} 200 - returns json object with event name and data string
+ */
 
 app.put('/update', (req, res) => {
   let payload = {
