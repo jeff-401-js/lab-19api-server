@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * API Server Module
+ * @module server
+ */
+
 require('dotenv').config();
 
 const express = require('express');
@@ -8,8 +13,24 @@ const app = express();
 
 app.use(express.json());
 
+const options = require('../docs/config/swagger');
+const expressSwagger = require('express-swagger-generator')(app);
+expressSwagger(options);
+
+app.use(express.static('docs'));
+app.use('/docs', express.static('docs'));
+
 
 const Q = require('@nmq/q/client');
+
+/**
+ * get route read
+ * @route GET /{read}
+ * @consumes nothing
+ * @param {object} req - request object
+ * @param {object} res - response object
+ * @returns {Object} 200 - returns json object with name and data
+ */
 
 app.get('/read', (req, res) => {
   let payload = {
