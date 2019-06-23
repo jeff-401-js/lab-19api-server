@@ -26,9 +26,20 @@ PORT=3001
 Q_SERVER=http://localhost:3000
 
 #### Running the app
-* `nodemon index.js`
 * `npm start`
+
+
+* Endpoint: `/read`
+  * allows publishing of status 200 and json payload with event name and data string
+* Endpoint: `/create`
+  * allows publishing of status 200 and json payload with event name and data string
+* Endpoint: `/update`
+  * allows publishing of status 200 and json payload with event name and data string
+* Endpoint: `/delete`
+  * allows publishing of status 200 and json payload with event name and data string
+* Endpoint ` `
+  * catchall error endpoint allows publishing of status 200 and json payload with event name and data string
 
 #### Tests
 * How do you run tests?
-* `npm test app.test.js`
+* `npm test`

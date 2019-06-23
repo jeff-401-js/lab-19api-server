@@ -77,6 +77,15 @@ app.put('/update', (req, res) => {
   res.status(200).json(payload);
 });
 
+/**
+ * delete route delete
+ * @route DELETE /{delete}
+ * @consumes nothing
+ * @param {object} req - request object
+ * @param {object} res - response object
+ * @returns {Object} 200 - returns json object with event name and data string
+ */
+
 app.delete('/delete', (req, res) => {
   let payload = {
     name: 'delete',
@@ -85,6 +94,15 @@ app.delete('/delete', (req, res) => {
   Q.publish('database', 'delete', JSON.stringify(payload));
   res.status(200).json(payload);
 });
+
+/**
+ * use route catchall
+ * @route USE /{}
+ * @consumes nothing
+ * @param {object} req - request object
+ * @param {object} res - response object
+ * @returns {Object} 200 - returns json object with event name and data string
+ */
 
 app.use((req, res) => {
   let payload = {
@@ -95,6 +113,10 @@ app.use((req, res) => {
   res.status(200).json(payload);
 });
 
+/**
+ * Export object with authrouter
+ * @type {Object}
+ */
 
 module.exports = {
   server: app,
