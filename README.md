@@ -7,10 +7,12 @@ Jeff
 ### Links and Resources
 * [submission PR](https://github.com/jeff-401-js/lab-19api-server/pull/1)
 * [travis](https://www.travis-ci.com/jeff-401-js/lab-19api-server)
+* [Heroku](https://murmuring-tor-32629.herokuapp.com/)
 
 #### Documentation
 * [UML-Data-Flow](https://photos.app.goo.gl/DjoR95g4THdKPHBE9)
-* [JSDOCS] - not required this lab
+* [JSDOCS](https://murmuring-tor-32629.herokuapp.com/docs)
+* [Swagger](https://murmuring-tor-32629.herokuapp.com/api-docs)
 
 ## Modules
 server.js
