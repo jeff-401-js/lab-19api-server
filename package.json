@@ -18,8 +18,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nmq/q": "^1.0.3",
+    "express-swagger-generator": "^1.1.14",
+    "jsdoc": "^3.6.2",
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
-    "jest": "^23.6.0",
-    "@nmq/q": "^1.0.3"
+    "express": "^4.17.1",
+    "jest": "^23.6.0"
   }
 }
